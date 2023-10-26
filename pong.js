@@ -20,7 +20,7 @@ var Ball = {
             y: (this.canvas.height / 2) - 9,
             moveX: DIRECTION.IDLE,
             moveY: DIRECTION.IDLE,
-            speed: incrementedSpeed || 7 
+            speed: incrementedSpeed || 11
         };
     }
 };
@@ -55,7 +55,7 @@ var Game = {
         this.ai = Ai.new.call(this, 'right');
         this.ball = Ball.new.call(this);
  
-        this.ai.speed = 5;
+        this.ai.speed = 9;
         this.running = this.over = false;
         this.turn = this.ai;
         this.timer = this.round = 0;
