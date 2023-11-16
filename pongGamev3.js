@@ -9,7 +9,7 @@ var DIRECTION = {
 
 
  
-var rounds = [1],
+var rounds = [5, 5, 5, 5, 5],
     colors = ['#1abc9c', '#2ecc71', '#3498db', '#8c52ff', '#9b59b6'],
     finalRound = rounds.length-1,
     nextRound = document.getElementById('next-round');
