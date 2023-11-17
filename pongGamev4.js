@@ -67,7 +67,7 @@ var Game = {
         document.getElementById('gameWon').style.display = 'none';
         document.getElementById('gameLost').style.display = 'none';
         document.getElementById('pongCanvas').style.opacity = .5;
-        document.getElementsByClassName('score').style.opacity = .5;
+        // document.getElementsByClassName('score').style.opacity = .5;
  
         Pong.menu();
         Pong.listen();
@@ -112,7 +112,7 @@ var Game = {
             document.getElementById('gameStart').style.display = 'none';
             document.getElementById('gameLost').style.display = 'none';
             document.getElementById('pongCanvas').style.opacity = 1;
-            document.getElementsByClassName('score').style.opacity = 1;
+            // document.getElementsByClassName('score').style.opacity = 1;
             // If the ball collides with the bound limits - correct the x and y coords.
             if (this.ball.x <= 0) Pong._resetTurn.call(this, this.ai, this.player);
             if (this.ball.x >= this.canvas.width - this.ball.width) Pong._resetTurn.call(this, this.player, this.ai);
