@@ -8,7 +8,6 @@ var DIRECTION = {
 };
  
 var rounds = [5, 5, 5, 5, 5],
-    colors = ['#1abc9c', '#2ecc71', '#3498db', '#8c52ff', '#9b59b6'],
     finalRound = rounds.length-1,
     nextRound = document.getElementById('pongLevelNext');
  
@@ -61,10 +60,10 @@ var Game = {
         this.timer = this.round = 0;
         //this.color = '#8c52ff';
         // Show the gameStart element
-        document.getElementById('pongStart').style.display = 'block';
-        document.getElementById('pongWon').style.display = 'none';
-        document.getElementById('pongGameover').style.display = 'none';
-        document.getElementById('pongCanvas').style.opacity = .5;
+        //document.getElementById('pongStart').style.display = 'block';
+        //document.getElementById('pongWon').style.display = 'none';
+        //document.getElementById('pongGameover').style.display = 'none';
+        //document.getElementById('pongCanvas').style.opacity = .5;
         // document.getElementsByClassName('score').style.opacity = .5;
  
         Pong.menu();
@@ -85,9 +84,9 @@ var Game = {
     // Update all objects (move the player, ai, ball, increment the score, etc.)
     update: function () {
         if (!this.over) {
-            document.getElementById('pongStart').style.display = 'none';
-            document.getElementById('pongGameover').style.display = 'none';
-            document.getElementById('pongCanvas').style.opacity = 1;
+            //document.getElementById('pongStart').style.display = 'none';
+            //document.getElementById('pongGameover').style.display = 'none';
+            //document.getElementById('pongCanvas').style.opacity = 1;
             // document.getElementsByClassName('score').style.opacity = 1;
             // If the ball collides with the bound limits - correct the x and y coords.
             if (this.ball.x <= 0) Pong._resetTurn.call(this, this.ai, this.player);
@@ -166,8 +165,8 @@ var Game = {
             // there are not.
             if (!rounds[this.round + 1]) {
                 this.over = true;
-                document.getElementById('pongCanvas').style.opacity = .5;
-                document.getElementById('pongWon').style.display = 'block';
+                //document.getElementById('pongCanvas').style.opacity = .5;
+                //document.getElementById('pongWon').style.display = 'block';
                 setTimeout(function () { Pong.endGameMenu('Winner!'); }, 1000);
             } else {
                 // If there is another round, reset all the values and increment the round number.
@@ -185,8 +184,8 @@ var Game = {
         // Check to see if the ai/AI has won the round.
         else if (this.ai.score === rounds[this.round]) {
             this.over = true;
-            document.getElementById('pongCanvas').style.opacity = .5;
-            document.getElementById('pongGameover').style.display = 'block';
+            //document.getElementById('pongCanvas').style.opacity = .5;
+            //document.getElementById('pongGameover').style.display = 'block';
             setTimeout(function () { Pong.endGameMenu('Game Over!'); }, 1000);
         }
     },
