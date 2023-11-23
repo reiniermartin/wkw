@@ -4,12 +4,8 @@ var DIRECTION = {
     UP: 1,
     DOWN: 2,
     LEFT: 3,
-    RIGHT: 4
-};
-
-
- 
-var rounds = [1, 1],
+    RIGHT: 4 },
+    rounds = [1, 1],
     finalRound = rounds.length-1,
     nextRound = document.getElementById('gameNext'),
     gameMode = document.getElementById('gameMode'),
@@ -83,11 +79,6 @@ var Game = {
     update: function () {
         if (!this.over) {
             gameMode.classList.remove('paused');
-            setTimeout(function () {
-                gameStart.style.display = 'none';
-                gameWon.style.display = 'none';
-                gameEnd.style.display = 'none';
-             }, 1000);
             // If the ball collides with the bound limits - correct the x and y coords.
             if (this.ball.x <= 0) Pong._resetTurn.call(this, this.ai, this.player);
             if (this.ball.x >= this.canvas.width - this.ball.width) Pong._resetTurn.call(this, this.player, this.ai);
