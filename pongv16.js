@@ -166,7 +166,7 @@ var Game = {
                         countDown.textContent = '0';
                     }
                 }, 1000);
-                setTimeout(function () { Pong.endGameMenu('Winner!'); }, 1000);
+                setTimeout(function () { Pong.endGameMenu('Winner!'); }, 2000);
             } else {
                 // If there is another round, reset all the values and increment the round number.
                 //this.color = this._generateRoundColor();
@@ -198,7 +198,7 @@ var Game = {
                     countDown.textContent = '0';
                 }
             }, 1000);
-            setTimeout(function () { Pong.endGameMenu('Game Over!'); }, 1000);
+            setTimeout(function () { Pong.endGameMenu('Game Over!'); }, 2000);
         }
     },
  
