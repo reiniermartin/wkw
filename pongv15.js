@@ -151,10 +151,21 @@ var Game = {
             // there are not.
             if (!rounds[this.round + 1]) {
                 this.over = true;
+                let count = 5;
+                const countDown = document.getElementById('restartCountdown1');
+                countDown.textContent = count;
                 gameStart.style.display = 'none';
                 gameEnd.style.display = 'none';
                 gameWon.style.display = 'block';
                 gameMode.classList.add('paused');
+                const interval = setInterval(() => {
+                    countDown.textContent = count-1;
+                    count--;
+                    if (count < 0) {
+                        clearInterval(interval);
+                        countDown.textContent = '0';
+                    }
+                }, 1000);
                 setTimeout(function () { Pong.endGameMenu('Winner!'); }, 1000);
             } else {
                 // If there is another round, reset all the values and increment the round number.
@@ -172,10 +183,21 @@ var Game = {
         // Check to see if the ai/AI has won the round.
         else if (this.ai.score === rounds[this.round]) {
             this.over = true;
+            let count = 5;
+            const countDown = document.getElementById('restartCountdown2');
+            countDown.textContent = count;
             gameStart.style.display = 'none';
             gameWon.style.display = 'none';
             gameEnd.style.display = 'block';
             gameMode.classList.add('paused');
+            const interval = setInterval(() => {
+                countDown.textContent = count-1;
+                count--;
+                if (count < 0) {
+                    clearInterval(interval);
+                    countDown.textContent = '0';
+                }
+            }, 1000);
             setTimeout(function () { Pong.endGameMenu('Game Over!'); }, 1000);
         }
     },
