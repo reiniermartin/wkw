@@ -62,11 +62,6 @@ var Game = {
         this.running = this.over = false;
         this.turn = this.ai;
         this.timer = this.round = 0;
-        
-        /*document.getElementById('gameStart').style.display = 'block';
-        document.getElementById('gameWon').style.display = 'none';
-        document.getElementById('gameLost').style.display = 'none';
-        document.getElementById('pongCanvas').style.opacity = .5;*/
  
         Pong.menu();
         Pong.listen();
@@ -245,72 +240,50 @@ var Game = {
     loop: function () {
         Pong.update();
         Pong.draw();
- 
         // If the game is not over, draw the next frame.
         if (!Pong.over) requestAnimationFrame(Pong.loop);
     },
  
     listen: function () {
-
         document.addEventListener('keydown', function (key) {
-            // Handle the 'Press any key to begin' function and start the game.
             if (Pong.running === false) {
                 Pong.running = true;
                 window.requestAnimationFrame(Pong.loop);
             }
- 
-            // Handle up arrow and w key events
             if (key.keyCode === 38 || key.keyCode === 87) Pong.player.move = DIRECTION.UP;
- 
-            // Handle down arrow and s key events
             if (key.keyCode === 40 || key.keyCode === 83) Pong.player.move = DIRECTION.DOWN;
         });
- 
-        // Stop the player from moving when there are no keys being pressed.
         document.addEventListener('keyup', function (key) { Pong.player.move = DIRECTION.IDLE; });
-
-        // Unified event handlers
         var handleButtonDown = function(moveDirection) {
             return function(e) {
-                e.preventDefault(); // Prevents additional mouse event or scrolling on touch devices
+                e.preventDefault();
                 Pong.player.move = moveDirection;
-
-
                 if (Pong.running === false) {
                     Pong.running = true;
                     window.requestAnimationFrame(Pong.loop);
                 }
             };
         };
-
         var handleButtonUp = function() {
             Pong.player.move = DIRECTION.IDLE;
         };
-
-        // Attach event listeners for buttonUp
         var buttonUp = document.getElementById('buttonUp');
         buttonUp.addEventListener('mousedown', handleButtonDown(DIRECTION.UP));
         buttonUp.addEventListener('touchstart', handleButtonDown(DIRECTION.UP));
         buttonUp.addEventListener('mouseup', handleButtonUp);
         buttonUp.addEventListener('touchend', handleButtonUp);
-
-        // Attach event listeners for buttonDown
         var buttonDown = document.getElementById('buttonDown');
         buttonDown.addEventListener('mousedown', handleButtonDown(DIRECTION.DOWN));
         buttonDown.addEventListener('touchstart', handleButtonDown(DIRECTION.DOWN));
         buttonDown.addEventListener('mouseup', handleButtonUp);
         buttonDown.addEventListener('touchend', handleButtonUp);
     },
- 
-    // Reset the ball location, the player turns and set a delay before the next round begins.
     _resetTurn: function(victor, loser) {
         this.ball = Ball.new.call(this, this.ball.speed);
         this.turn = loser;
         this.timer = (new Date()).getTime();
- 
         victor.score++;
     },
- 
     // Wait for a delay to have passed after each turn.
     _turnDelayIsOver: function() {
         return ((new Date()).getTime() - this.timer >= 1000);
