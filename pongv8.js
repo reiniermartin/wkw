@@ -83,9 +83,11 @@ var Game = {
     update: function () {
         if (!this.over) {
             gameMode.classList.remove('paused');
-            gameStart.style.display = 'none';
-            gameWon.style.display = 'none';
-            gameEnd.style.display = 'none';
+            setTimeout(function () {
+                gameStart.style.display = 'none';
+                gameWon.style.display = 'none';
+                gameEnd.style.display = 'none';
+             }, 1000);
             // If the ball collides with the bound limits - correct the x and y coords.
             if (this.ball.x <= 0) Pong._resetTurn.call(this, this.ai, this.player);
             if (this.ball.x >= this.canvas.width - this.ball.width) Pong._resetTurn.call(this, this.player, this.ai);
