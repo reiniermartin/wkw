@@ -9,7 +9,7 @@ var DIRECTION = {
 
 
  
-var rounds = [1,],
+var rounds = [1, 1],
     finalRound = rounds.length-1,
     nextRound = document.getElementById('gameNext'),
     gameMode = document.getElementById('gameMode'),
