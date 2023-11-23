@@ -13,7 +13,10 @@ var rounds = [5, 5, 5, 5, 5],
     finalRound = rounds.length-1,
     nextRound = document.getElementById('gameNext'),
     gameMode = document.getElementById('gameMode'),
-    gameMessage = document.getElementById('gameMessage');
+    gameMessage = document.getElementById('gameMessage'),
+    gameStart = document.getElementById('messageStart'),
+    gameWon = document.getElementById('messageWon'),
+    gameEnd = document.getElementById('messageEnd');
  
 // The ball object (The cube that bounces back and forth)
 var Ball = {
@@ -49,20 +52,18 @@ var Game = {
     initialize: function () {
         this.canvas = document.querySelector('canvas');
         this.context = this.canvas.getContext('2d');
- 
         this.canvas.width = 1400;
         this.canvas.height = 1000;
-        
- 
         this.player = Ai.new.call(this, 'left');
         this.ai = Ai.new.call(this, 'right');
         this.ball = Ball.new.call(this);
- 
         this.ai.speed = 9;
         this.running = this.over = false;
         this.turn = this.ai;
         this.timer = this.round = 0;
- 
+        gameStart.style.display = 'block';
+        gameWon.style.display = 'none';
+        gameEnd.style.display = 'none';
         Pong.menu();
         Pong.listen();
     },
@@ -82,6 +83,9 @@ var Game = {
     update: function () {
         if (!this.over) {
             gameMode.classList.remove('paused');
+            gameStart.style.display = 'none';
+            gameWon.style.display = 'none';
+            gameEnd.style.display = 'none';
             // If the ball collides with the bound limits - correct the x and y coords.
             if (this.ball.x <= 0) Pong._resetTurn.call(this, this.ai, this.player);
             if (this.ball.x >= this.canvas.width - this.ball.width) Pong._resetTurn.call(this, this.player, this.ai);
@@ -135,7 +139,6 @@ var Game = {
                 if (this.ball.y <= this.player.y + this.player.height && this.ball.y + this.ball.height >= this.player.y) {
                     this.ball.x = (this.player.x + this.ball.width);
                     this.ball.moveX = DIRECTION.RIGHT;
- 
                 }
             }
  
@@ -144,7 +147,6 @@ var Game = {
                 if (this.ball.y <= this.ai.y + this.ai.height && this.ball.y + this.ball.height >= this.ai.y) {
                     this.ball.x = (this.ai.x - this.ball.width);
                     this.ball.moveX = DIRECTION.LEFT;
- 
                 }
             }
         }
@@ -157,6 +159,7 @@ var Game = {
             if (!rounds[this.round + 1]) {
                 this.over = true;
                 gameMode.classList.add('paused');
+                gameWon.style.display = 'block';
                 setTimeout(function () { Pong.endGameMenu('Winner!'); }, 1000);
             } else {
                 // If there is another round, reset all the values and increment the round number.
@@ -175,6 +178,7 @@ var Game = {
         else if (this.ai.score === rounds[this.round]) {
             this.over = true;
             gameMode.classList.add('paused');
+            gameEnd.style.display = 'block';
             setTimeout(function () { Pong.endGameMenu('Game Over!'); }, 1000);
         }
     },
