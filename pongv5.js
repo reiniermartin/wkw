@@ -11,7 +11,9 @@ var DIRECTION = {
  
 var rounds = [5, 5, 5, 5, 5],
     finalRound = rounds.length-1,
-    nextRound = document.getElementById('gameNext');
+    nextRound = document.getElementById('gameNext'),
+    gameMode = document.getElementById('gameMode'),
+    gameMessage = document.getElementById('gameMessage');
  
 // The ball object (The cube that bounces back and forth)
 var Ball = {
@@ -84,9 +86,7 @@ var Game = {
     // Update all objects (move the player, ai, ball, increment the score, etc.)
     update: function () {
         if (!this.over) {
-            /*document.getElementById('gameStart').style.display = 'none';
-            document.getElementById('gameLost').style.display = 'none';
-            document.getElementById('pongCanvas').style.opacity = 1;*/
+            gameMode.classList.remove('paused');
             // If the ball collides with the bound limits - correct the x and y coords.
             if (this.ball.x <= 0) Pong._resetTurn.call(this, this.ai, this.player);
             if (this.ball.x >= this.canvas.width - this.ball.width) Pong._resetTurn.call(this, this.player, this.ai);
@@ -161,8 +161,7 @@ var Game = {
             // there are not.
             if (!rounds[this.round + 1]) {
                 this.over = true;
-                /*document.getElementById('pongCanvas').style.opacity = .5;
-                document.getElementById('gameWon').style.display = 'block';*/
+                gameMode.classList.add('paused');
                 setTimeout(function () { Pong.endGameMenu('Winner!'); }, 1000);
             } else {
                 // If there is another round, reset all the values and increment the round number.
@@ -180,8 +179,7 @@ var Game = {
         // Check to see if the ai/AI has won the round.
         else if (this.ai.score === rounds[this.round]) {
             this.over = true;
-            /*document.getElementById('pongCanvas').style.opacity = .5;
-            document.getElementById('gameLost').style.display = 'block';*/
+            gameMode.classList.add('paused');
             setTimeout(function () { Pong.endGameMenu('Game Over!'); }, 1000);
         }
     },
