@@ -5,7 +5,7 @@ var DIRECTION = {
     DOWN: 2,
     LEFT: 3,
     RIGHT: 4 },
-    rounds = [1, 1, 1],
+    rounds = [5, 5, 5, 5, 5],
     finalRound = rounds.length-1,
     nextRound = document.getElementById('gameNext'),
     gameMode = document.getElementById('gameMode'),
