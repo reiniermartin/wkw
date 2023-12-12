@@ -213,7 +213,7 @@ var Game = {
             this.canvas.height
         );*/
         // Set the fill style to black
-        this.context.fillStyle = this.color; 
+        // this.context.fillStyle = this.color; 
         // Set the fill style to white (For the paddles and the ball)
         this.context.fillStyle = '#e8b62a';
  
