@@ -12,7 +12,8 @@ var DIRECTION = {
     gameMessage = document.getElementById('gameMessage'),
     gameStart = document.getElementById('messageStart'),
     gameWon = document.getElementById('messageWon'),
-    gameEnd = document.getElementById('messageEnd');
+    gameEnd = document.getElementById('messageEnd'),
+    ctx = canvas.getContext('2d');
  
 // The ball object (The cube that bounces back and forth)
 var Ball = {
