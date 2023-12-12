@@ -205,12 +205,13 @@ var Game = {
     // Draw the objects to the canvas element
     draw: function () {
         // Clear the Canvas
+        /*
         this.context.clearRect(
             0,
             0,
             this.canvas.width,
             this.canvas.height
-        );
+        );*/
         // Set the fill style to black
         this.context.fillStyle = this.color; 
         // Set the fill style to white (For the paddles and the ball)
