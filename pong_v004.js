@@ -46,7 +46,8 @@ var Ai = {
  
 var Game = {
     initialize: function () {
-        this.canvas = document.querySelector('canvas');
+        //this.canvas = document.querySelector('canvas');
+        this.canvas = document.getElementById('pongwkw');
         this.context = this.canvas.getContext('2d');
         this.canvas.width = 1400;
         this.canvas.height = 1000;
@@ -62,7 +63,7 @@ var Game = {
         gameEnd.style.display = 'none';
         Pong.menu();
         Pong.listen();
-        var ctx = canvas.getContext('2d');
+        //var ctx = canvas.getContext('2d');
     },
  
     endGameMenu: function (text) {
