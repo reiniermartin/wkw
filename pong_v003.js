@@ -12,8 +12,7 @@ var DIRECTION = {
     gameMessage = document.getElementById('gameMessage'),
     gameStart = document.getElementById('messageStart'),
     gameWon = document.getElementById('messageWon'),
-    gameEnd = document.getElementById('messageEnd'),
-    ctx = canvas.getContext('2d');
+    gameEnd = document.getElementById('messageEnd');
  
 // The ball object (The cube that bounces back and forth)
 var Ball = {
@@ -63,6 +62,7 @@ var Game = {
         gameEnd.style.display = 'none';
         Pong.menu();
         Pong.listen();
+        var ctx = canvas.getContext('2d');
     },
  
     endGameMenu: function (text) {
