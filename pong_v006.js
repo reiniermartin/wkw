@@ -345,21 +345,4 @@ var Game = {
 };
  
 var Pong = Object.assign({}, Game);
-//Pong.initialize();
-// Event listener for 'activate_pong'
-document.getElementById('activate_pong').addEventListener('click', function() {
-    var pongGameElement = document.getElementById('pong_game');
-    if (pongGameElement) {
-        pongGameElement.classList.add('active');
-        Pong.initialize(); // Initialize the game
-    }
-});
-
-// Event listener for 'exit_pong'
-document.getElementById('exit_pong').addEventListener('click', function() {
-    var pongGameElement = document.getElementById('pong_game');
-    if (pongGameElement) {
-        pongGameElement.classList.remove('active');
-        Pong.stop(); // Stop the game
-    }
-});
+Pong.initialize();
