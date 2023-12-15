@@ -46,6 +46,7 @@ var Ai = {
  
 var Game = {
     initialize: function () {
+        //this.canvas = document.querySelector('canvas');
         this.canvas = document.getElementById('pongwkw');
         this.context = this.canvas.getContext('2d');
         this.canvas.width = 1400;
@@ -62,6 +63,7 @@ var Game = {
         gameEnd.style.display = 'none';
         Pong.menu();
         Pong.listen();
+        //var ctx = canvas.getContext('2d');
     },
  
     endGameMenu: function (text) {
@@ -315,10 +317,26 @@ var Game = {
 };
  
 var Pong = Object.assign({}, Game);
+// Add a stop method to the Game object
+Game.stop = function() {
+    this.over = true; // Set the game to be over
+    // Add any additional cleanup logic here
+};
 
+// Start the game and add class on clicking 'activate_pong'
 var activateButton = document.getElementById('activate_pong');
 if (activateButton) {
     activateButton.addEventListener('click', function() {
-        Pong.initialize();
+        Pong.initialize(); // Start the game
+        document.body.classList.add('pong--playing'); // Add class to body
+    });
+}
+
+// Stop the game and remove class on clicking 'exit_pong'
+var exitButton = document.getElementById('exit_pong');
+if (exitButton) {
+    exitButton.addEventListener('click', function() {
+        Pong.stop(); // Stop the game
+        document.body.classList.remove('pong--playing'); // Remove class from body
     });
 }
