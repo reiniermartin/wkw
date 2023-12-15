@@ -317,26 +317,4 @@ var Game = {
 };
  
 var Pong = Object.assign({}, Game);
-// Add a stop method to the Game object
-Game.stop = function() {
-    this.over = true; // Set the game to be over
-    // Add any additional cleanup logic here
-};
-
-// Start the game and add class on clicking 'activate_pong'
-var activateButton = document.getElementById('activate_pong');
-if (activateButton) {
-    activateButton.addEventListener('click', function() {
-        Pong.initialize(); // Start the game
-        document.body.classList.add('pong--playing'); // Add class to body
-    });
-}
-
-// Stop the game and remove class on clicking 'exit_pong'
-var exitButton = document.getElementById('exit_pong');
-if (exitButton) {
-    exitButton.addEventListener('click', function() {
-        Pong.stop(); // Stop the game
-        document.body.classList.remove('pong--playing'); // Remove class from body
-    });
-}
+Pong.initialize();
