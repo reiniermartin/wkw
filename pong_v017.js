@@ -270,12 +270,21 @@ var Game = {
  
     listen: function () {
         document.addEventListener('keydown', function (key) {
+            if (key.keyCode !== 27) {
+                if (Pong.running === false && playingPong) {
+                    Pong.running = true;
+                    window.requestAnimationFrame(Pong.loop);
+                }
+                if (key.keyCode === 38 || key.keyCode === 87) Pong.player.move = DIRECTION.UP;
+                if (key.keyCode === 40 || key.keyCode === 83) Pong.player.move = DIRECTION.DOWN;
+            }
+            /*
             if (Pong.running === false && playingPong) {
                 Pong.running = true;
                 window.requestAnimationFrame(Pong.loop);
             }
             if (key.keyCode === 38 || key.keyCode === 87) Pong.player.move = DIRECTION.UP;
-            if (key.keyCode === 40 || key.keyCode === 83) Pong.player.move = DIRECTION.DOWN;
+            if (key.keyCode === 40 || key.keyCode === 83) Pong.player.move = DIRECTION.DOWN;*/
         });
         document.addEventListener('keyup', function (key) { Pong.player.move = DIRECTION.IDLE; });
         var handleButtonDown = function(moveDirection) {
