@@ -12,7 +12,8 @@ var DIRECTION = {
     gameMessage = document.getElementById('gameMessage'),
     gameStart = document.getElementById('messageStart'),
     gameWon = document.getElementById('messageWon'),
-    gameEnd = document.getElementById('messageEnd');
+    gameEnd = document.getElementById('messageEnd'),
+    playingPong = false;
  
 // The ball object (The cube that bounces back and forth)
 var Ball = {
@@ -46,7 +47,6 @@ var Ai = {
  
 var Game = {
     initialize: function () {
-        //this.canvas = document.querySelector('canvas');
         this.canvas = document.getElementById('pongwkw');
         this.context = this.canvas.getContext('2d');
         this.canvas.width = 1400;
@@ -63,7 +63,6 @@ var Game = {
         gameEnd.style.display = 'none';
         Pong.menu();
         Pong.listen();
-        //var ctx = canvas.getContext('2d');
     },
  
     endGameMenu: function (text) {
@@ -79,7 +78,7 @@ var Game = {
  
     // Update all objects (move the player, ai, ball, increment the score, etc.)
     update: function () {
-        if (!this.over) {
+        if (!this.over && playingPong) {
             gameMode.classList.remove('paused');
             // If the ball collides with the bound limits - correct the x and y coords.
             if (this.ball.x <= 0) Pong._resetTurn.call(this, this.ai, this.player);
@@ -340,6 +339,7 @@ Pong.initialize();
         activateButton.addEventListener('click', function() {
             if (pongGameElement) {
                 pongGameElement.classList.add('active');
+                playingPong = true;
                 myPong();
             }
         });
@@ -349,6 +349,7 @@ Pong.initialize();
         exitButton.addEventListener('click', function() {
             if (pongGameElement) {
                 pongGameElement.classList.remove('active');
+                playingPong = false;
             }
         });
     }
