@@ -270,7 +270,7 @@ var Game = {
  
     listen: function () {
         document.addEventListener('keydown', function (key) {
-            if (Pong.running === false ) {
+            if (Pong.running === false && playingPong) {
                 Pong.running = true;
                 window.requestAnimationFrame(Pong.loop);
             }
@@ -282,7 +282,7 @@ var Game = {
             return function(e) {
                 e.preventDefault();
                 Pong.player.move = moveDirection;
-                if (Pong.running === false) {
+                if (Pong.running === false && playingPong) {
                     Pong.running = true;
                     window.requestAnimationFrame(Pong.loop);
                 }
