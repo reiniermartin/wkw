@@ -46,30 +46,7 @@ var Ai = {
  
 var Game = {
     initialize: function () {
-
-        
-        var pongGameElement = document.getElementById('pong_game');
-        if (pongGameElement && pongGameElement.classList.contains('active')) {
-            // Original initialization logic
-            this.canvas = document.getElementById('pongwkw');
-            this.context = this.canvas.getContext('2d');
-            this.canvas.width = 1400;
-            this.canvas.height = 1000;
-            this.player = Ai.new.call(this, 'left');
-            this.ai = Ai.new.call(this, 'right');
-            this.ball = Ball.new.call(this);
-            this.ai.speed = 9;
-            this.running = this.over = false;
-            this.turn = this.ai;
-            this.timer = this.round = 0;
-            gameStart.style.display = 'block';
-            gameWon.style.display = 'none';
-            gameEnd.style.display = 'none';
-            Pong.menu();
-            Pong.listen();
-        }
-
-        /*
+        //this.canvas = document.querySelector('canvas');
         this.canvas = document.getElementById('pongwkw');
         this.context = this.canvas.getContext('2d');
         this.canvas.width = 1400;
@@ -85,9 +62,8 @@ var Game = {
         gameWon.style.display = 'none';
         gameEnd.style.display = 'none';
         Pong.menu();
-        Pong.listen();*/
-
-        
+        Pong.listen();
+        //var ctx = canvas.getContext('2d');
     },
  
     endGameMenu: function (text) {
@@ -99,10 +75,6 @@ var Game = {
  
     menu: function () {
         Pong.draw();
-    },
- 
-    stop: function () {
-        this.over = true;
     },
  
     // Update all objects (move the player, ai, ball, increment the score, etc.)
