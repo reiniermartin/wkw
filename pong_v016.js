@@ -354,3 +354,11 @@ Pong.initialize();
         });
     }
 });
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        var exitButton = document.getElementById('exit_pong');
+        if (exitButton) {
+            exitButton.click();
+        }
+    }
+});
