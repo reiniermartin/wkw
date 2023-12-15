@@ -318,3 +318,38 @@ var Game = {
  
 var Pong = Object.assign({}, Game);
 Pong.initialize();
+
+
+  const myPong = () => {
+    const gameCanvas = document.getElementById('pongwkw');
+    const gameUI = document.getElementById('game-ui');
+    if (gameCanvas) {
+      gameUI.style.height = `${gameCanvas.offsetHeight}px`;
+      gameUI.style.width = `${gameCanvas.offsetWidth}px`;
+    }
+  };
+  document.addEventListener('DOMContentLoaded', myPong);
+  window.addEventListener('resize', myPong);
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    var activateButton = document.getElementById('activate_pong');
+    var exitButton = document.getElementById('exit_pong');
+    var pongGameElement = document.getElementById('pong_game');
+
+    if (activateButton) {
+        activateButton.addEventListener('click', function() {
+            if (pongGameElement) {
+                pongGameElement.classList.add('active');
+                myPong();
+            }
+        });
+    }
+
+    if (exitButton) {
+        exitButton.addEventListener('click', function() {
+            if (pongGameElement) {
+                pongGameElement.classList.remove('active');
+            }
+        });
+    }
+});
