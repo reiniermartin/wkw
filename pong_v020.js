@@ -19,13 +19,13 @@ var DIRECTION = {
 var Ball = {
     new: function (incrementedSpeed) {
         return {
-            width: 18,
-            height: 18,
-            x: (this.canvas.width / 2) - 9,
-            y: (this.canvas.height / 2) - 9,
+            width: 20,
+            height: 20,
+            x: (this.canvas.width / 2) - 10,
+            y: (this.canvas.height / 2) - 10,
             moveX: DIRECTION.IDLE,
             moveY: DIRECTION.IDLE,
-            speed: incrementedSpeed || 11 
+            speed: incrementedSpeed || 10
         };
     }
 };
@@ -34,8 +34,8 @@ var Ball = {
 var Ai = {
     new: function (side) {
         return {
-            width: 18,
-            height: 140,
+            width: 20,
+            height: 180,
             x: side === 'left' ? 150 : this.canvas.width - 150,
             y: (this.canvas.height / 2) - 35,
             score: 0,
@@ -270,13 +270,6 @@ var Game = {
                 if (key.keyCode === 38 || key.keyCode === 87) Pong.player.move = DIRECTION.UP;
                 if (key.keyCode === 40 || key.keyCode === 83) Pong.player.move = DIRECTION.DOWN;
             }
-            /*
-            if (Pong.running === false && playingPong) {
-                Pong.running = true;
-                window.requestAnimationFrame(Pong.loop);
-            }
-            if (key.keyCode === 38 || key.keyCode === 87) Pong.player.move = DIRECTION.UP;
-            if (key.keyCode === 40 || key.keyCode === 83) Pong.player.move = DIRECTION.DOWN;*/
         });
         document.addEventListener('keyup', function (key) { Pong.player.move = DIRECTION.IDLE; });
         var handleButtonDown = function(moveDirection) {
