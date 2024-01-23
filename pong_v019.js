@@ -319,7 +319,7 @@ var Game = {
 var Pong = Object.assign({}, Game);
 Pong.initialize();
 
-
+/*
   const myPong = () => {
     const gameCanvas = document.getElementById('pongwkw');
     const gameUI = document.getElementById('game-ui');
@@ -329,7 +329,7 @@ Pong.initialize();
     }
   };
   document.addEventListener('DOMContentLoaded', myPong);
-  window.addEventListener('resize', myPong);
+  window.addEventListener('resize', myPong);*/
   
   document.addEventListener('DOMContentLoaded', function() {
     var activateButton = document.getElementById('activate_pong');
