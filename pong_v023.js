@@ -13,7 +13,9 @@ var DIRECTION = {
     gameStart = document.getElementById('messageStart'),
     gameWon = document.getElementById('messageWon'),
     gameEnd = document.getElementById('messageEnd'),
-    playingPong = false;
+    playingPong = false,
+    windowWidth = window.innerWidth,
+    windowHeight = window.innerHeight;
 
 
 function setPaddleSpeed() {
