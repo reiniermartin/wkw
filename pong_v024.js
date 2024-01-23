@@ -63,10 +63,10 @@ var Ball = {
 var Ai = {
     new: function (side) {
         return {
-            width: 20,
-            height: 180,
-            x: side === 'left' ? 150 : this.canvas.width - 150,
-            y: (this.canvas.height / 2) - 35,
+            width: this.canvas.height / 40,
+            height: this.canvas.height / 5,
+            x: side === 'left' ? (this.canvas.width * paddleMargin()) - (this.canvas.height / 40) : (this.canvas.width * (1 - paddleMargin())),
+            y: (this.canvas.height / 2) - this.canvas.height / 10,
             score: 0,
             move: DIRECTION.IDLE,
             speed: setPaddleSpeed()
