@@ -130,8 +130,9 @@ var Game = {
   },
   update: function () {
       if (!this.over && playingPong) {
-        $('body').css('overflow', 'hidden');
         gameMode.classList.remove('paused');
+        $('body').css('overflow', 'hidden');
+        $('body').css('height', '100svh');
         // If the ball collides with the bound limits - correct the x and y coords.
         if (this.ball.x <= 0) Pong._resetTurn.call(this, this.ai, this.player);
         if (this.ball.x >= this.canvas.width - this.ball.width) Pong._resetTurn.call(this, this.player, this.ai);
