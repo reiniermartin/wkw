@@ -129,7 +129,6 @@ var Game = {
       Pong.draw();
   },
   update: function () {
-      $('body').css('overflow', 'hidden');
       if (!this.over && playingPong) {
         gameMode.classList.remove('paused');
         //$('.main').css('pointer-events', 'none');
@@ -418,6 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
     onLongPressDetected() {
       if (pongGameElement) {
         pongGameElement.classList.add('active');
+        document.body.style.overflow = 'hidden';
         playingPong = true;
       }
     }
