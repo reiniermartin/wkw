@@ -131,8 +131,8 @@ var Game = {
   update: function () {
       if (!this.over && playingPong) {
         gameMode.classList.remove('paused');
-        $('body').css('overflow', 'hidden');
-        $('.main').css('pointer-events', 'none');
+        // $('body').css('overflow', 'hidden');
+        //$('.main').css('pointer-events', 'none');
         // If the ball collides with the bound limits - correct the x and y coords.
         if (this.ball.x <= 0) Pong._resetTurn.call(this, this.ai, this.player);
         if (this.ball.x >= this.canvas.width - this.ball.width) Pong._resetTurn.call(this, this.player, this.ai);
@@ -363,13 +363,14 @@ var Pong = Object.assign({}, Game);
 Pong.initialize();
 document.addEventListener('DOMContentLoaded', function() {
   //var activateButton = document.getElementById('activate_pong');
+  var wkwMain = document.getElementById('wkw_main');
   var exitButton = document.getElementById('exit_pong');
   var pongGameElement = document.getElementById('pong_game');
   if (exitButton) {
     exitButton.addEventListener('click', function() {
       if (pongGameElement) {
-        $('body').css('overflow', 'auto');
         pongGameElement.classList.remove('active');
+        wkwMain.classList.remove('inactive');
         playingPong = false;
       }
     });
@@ -419,6 +420,7 @@ document.addEventListener('DOMContentLoaded', function() {
     onLongPressDetected() {
       if (pongGameElement) {
         pongGameElement.classList.add('active');
+        wkwMain.classList.add('inactive');
         playingPong = true;
       }
     }
